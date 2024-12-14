@@ -1,0 +1,5 @@
+com\qa\pages\LoginPage.class
+com\qa\testscripts\BaseClass.class
+com\qa\pages\Elements.class
+com\qa\testscripts\MainTest.class
+com\qa\pages\Saucedemo.class
