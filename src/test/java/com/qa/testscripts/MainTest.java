@@ -1,13 +1,14 @@
 package com.qa.testscripts;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class MainTest extends BaseClass {
 
-	@Test(priority=0)
+	//@Test(priority=0)
 	public void HomepageLanding() {
 		//https://demoqa.com/books
 		boolean homepage=driver.getCurrentUrl().contains("https://demoqa.com/elements");
@@ -20,7 +21,7 @@ public class MainTest extends BaseClass {
 		}
 	}
 	
-	@Test(priority=1)
+	//@Test(priority=1)
 	public void clickonElements() throws InterruptedException {
 //		loginpage.getElements1().click();
 //		Thread.sleep(2000);
@@ -30,7 +31,7 @@ public class MainTest extends BaseClass {
 		Thread.sleep(2000);
 	}
 	
-	@Test(priority=2)
+	//@Test(priority=2)
 	public void saucedemologin() throws InterruptedException {
 		driver.navigate().to("https://www.saucedemo.com/v1/");
 		Thread.sleep(1000);
@@ -72,4 +73,45 @@ public class MainTest extends BaseClass {
 		saucedemo.getFinish().click();
 		Thread.sleep(2000);
 		}
+	
+	
+	  @Test(priority=0)
+	    public void BasicControls() throws InterruptedException {
+		for (int i=1;i<=5;i++) {
+			
+		    //int i=1;
+			String firstname="FisrtName"+(i);
+			String lastname="lasttName"+(i);
+			String email="FisrtName"+(i)+"lasttName"+(i)+"@somedomain.com";
+			String password="test"+(i);
+			
+		driver.navigate().to("https://www.hyrtutorials.com/p/basic-controls.html");
+		Thread.sleep(1200);
+		JSE.executeScript("window.scrollBy(0, 1000)");  
+		WebElement firstnamebox=basiccontrols.getFirstName();
+		firstnamebox.sendKeys(firstname);
+		Thread.sleep(1200);
+		Assert.assertTrue(firstnamebox.isEnabled(), "Textbox is enabled.");
+		
+		Assert.assertTrue(firstnamebox.isDisplayed(), "Textbox is not visible.");
+		
+		basiccontrols.getLastName().sendKeys(lastname);
+		Thread.sleep(1200);
+		basiccontrols.getMaleRadiobutton().click();
+		Thread.sleep(1200);
+		basiccontrols.getEngCheckbox().click();
+		Thread.sleep(1200);
+		basiccontrols.getHinCheckbox().click();
+		Thread.sleep(1200);
+		JSE.executeScript("window.scrollBy(0, 1000)");  
+		basiccontrols.getEmail().sendKeys(email);
+		Thread.sleep(1200);
+		basiccontrols.getEPassword().sendKeys(password);
+		Thread.sleep(1500);
+		wait.until(ExpectedConditions.elementToBeClickable(basiccontrols.getRegister()));
+		basiccontrols.getRegister().click();
+		Thread.sleep(3500);
+		
+}
+}
 }

@@ -2,6 +2,8 @@ package com.qa.testscripts;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
+
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
@@ -14,8 +16,11 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
+import com.qa.pages.BasicControls;
+import com.qa.pages.ConfirmationPage;
 import com.qa.pages.Elements;
 import com.qa.pages.LoginPage;
+import com.qa.pages.LoginTest2;
 import com.qa.pages.Saucedemo;
 
 public class BaseClass {
@@ -24,9 +29,12 @@ public class BaseClass {
 	LoginPage loginpage;
 	Elements elements;
 	Saucedemo saucedemo;
+	BasicControls basiccontrols;
 	JavascriptExecutor JSE;
 	TakesScreenshot TSS;
 	WebDriverWait wait;
+	LoginTest2 logintest2;
+	ConfirmationPage cpage;
 	@Parameters({"Browser","Url"})
 	@BeforeClass
 //    public void Start() {
@@ -47,9 +55,12 @@ public class BaseClass {
 		loginpage=new LoginPage(driver);
 		elements=new Elements(driver);
 		saucedemo=new Saucedemo(driver);
+		basiccontrols=new BasicControls(driver);
+		logintest2=new LoginTest2(driver);
+		cpage=new ConfirmationPage(driver);
 		JSE= (JavascriptExecutor) driver;
 		TSS= (TakesScreenshot) driver;
-		//wait=new WebDriverWait(driver, 10);
+		wait=new WebDriverWait(driver, Duration.ofSeconds(10));
 		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
 		
@@ -65,8 +76,8 @@ public class BaseClass {
 	@AfterClass
 	public void TearDown()
 	{
-		driver.close();
-     	driver.quit();
+		//driver.close();
+     	//driver.quit();
 	}
 	
 	}

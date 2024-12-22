@@ -3,9 +3,11 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
   <parameter name="Browser" value="Edge" />
-  <parameter name="Url" value="https://demoqa.com/elements" />
+  <!-- <parameter name="Url" value="https://demoqa.com/elements" />-->
+  <parameter name="Url" value="https://practicetestautomation.com/" />
     <classes>
-      <class name="com.qa.testscripts.MainTest"/>
+     <!-- <class name="com.qa.testscripts.MainTest"/>-->
+      <class name="com.qa.testscripts.MainTest2"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
